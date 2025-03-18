@@ -3,7 +3,7 @@
 ![Badge de Statut](https://img.shields.io/badge/statut-en%20d%C3%A9veloppement-yellow)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-Une brève description de votre projet.
+LEs modèles de formulaire FNRAEC pour Winlink + VARA.
 
 ## 📋 Table des matières
 
@@ -18,15 +18,14 @@ Une brève description de votre projet.
 
 ## ✨ Fonctionnalités
 
-- Liste des fonctionnalités clés
-- Exemple : "Authentification utilisateur"
-- Exemple : "Dashboard interactif"
+- Formulaire "Message Exercice" 
+- Formulaire "Etat des Réseaux"
+- Formualire "Accusé de Réception"
 
 ## 🔧 Prérequis
 
-- Node.js v18+
-- PostgreSQL v15
-- [Autres dépendances]
+- Node.js v22.14.0
+- inliner 1.13.1 : pour la construction d'une page html sans dépendance : pas d'image ni aucun autre fichier. tout est inclus dans le fichir html.   Voir http://github.com/remy/inliner/
 
 ## 🚀 Installation
 
@@ -37,9 +36,6 @@ git clone https://github.com/votre-utilisateur/votre-projet.git
 # Installer les dépendances
 npm install
 
-# Configurer les variables d'environnement
-cp .env.example .env
-
 # Lancer le serveur
 npm start
 ```
@@ -47,30 +43,30 @@ npm start
 ## 💻 Utilisation
 
 ```bash
-# Mode développement
-npm run dev
-
-# Build pour production
+# Build avec inliner
 npm run build
-```
 
-**Exemple de code** :
+# Deploiement 
+npm run deploy
+Copie les fichiers de ./dist vers C:\RMS Express\Global Folders\Templates\FNRASEC_TEST\
 
-```javascript
-function exemple() {
-  console.log("Hello World!");
-}
+
 ```
 
 ## 📂 Structure du Projet
 
 ```
 /project-root
-├── src/
-│   ├── components/    # Composants React
-│   ├── styles/        # Fichiers CSS/SCSS
-│   └── index.js       # Point d'entrée
-├── public/            # Assets statiques
+├── css/               # Fichiers CSS
+│   └── style.css      
+├── dist/              # Dossier cible de build 
+├── img/               # Fichiers images
+├── js/                # Fichiers js
+│   ├── deploy.js
+│   └── build.js
+├── FNRASEC Accusé de Réception v2.0.txt
+├── FNRASEC_AR_FORM_Initial.html
+├── FNRASEC_AR_FORM_Viewer.html
 ├── package.json
 └── README.md
 ```
@@ -89,6 +85,6 @@ Distribué sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📧 Contact
 
-Votre Nom - [@votre_twitter](https://twitter.com/votre_twitter) - votre.email@example.com
+Jean-Louis Zola - F4IXH - [https://jlz.free.fr](https://jlz.free.fr) - jlzola@gmail.com
 
-[Lien du Projet](https://github.com/votre-utilisateur/votre-projet)
+[FNRASEC Winlink Templates](https://github.com/jlzola/FNRASECWinlinkTemplates)
