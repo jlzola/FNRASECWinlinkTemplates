@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page avec Barre Latérale d'Aide</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .help-panel {
+      width: 33.33%;
+      /* Occupe environ un tiers de la largeur */
+      background-color: #f4f4f9;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+    }
+
+    .help-panel.active {
+      transform: translateX(0);
+    }
+
+    .help-panel .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .help-panel .close-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .help-panel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .footer {
+      width: 100%;
+      background-color: #f1f1f1;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text,
+    .fnrasec-text {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .footer a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="main-content">
+      <h1>Bienvenue sur la Page Principale</h1>
+      <p>Cliquez sur le lien ci-dessous pour afficher le panneau d'aide :</p>
+      <div class="help">
+        <a href="#" id="help-link">Aide</a>
+      </div>
+      <p>Contenu principal de la page...</p>
+    </div>
+    <div class="help-panel" id="help-panel">
+      <button class="close-btn" id="close-btn">Fermer</button>
+      <h2>Aide en Ligne</h2>
+      <p>Voici quelques informations pour vous aider.</p>
+      <img src="https://via.placeholder.com/350x150" alt="Image d'aide">
+    </div>
+  </div>
+  <div class="footer">
+    <span id="version" class="footer-text">{var Templateversion}</span>
+    <span class="fnrasec-text">FNRASEC 2025</span>
+    <span class="footer-text">Réalisé par <a href="https://jlz.free.fr" target="_blank">Jelo F4IXH</a></span>
+  </div>
+
+  <script>
+    document.getElementById('help-link').addEventListener('click', function (event) {
+      event.preventDefault();
+      document.getElementById('help-panel').classList.add('active');
+    });
+
+    document.getElementById('close-btn').addEventListener('click', function () {
+      document.getElementById('help-panel').classList.remove('active');
+    });
+  </script>
+</body>
+
+</html>

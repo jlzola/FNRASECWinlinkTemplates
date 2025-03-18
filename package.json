@@ -1,0 +1,17 @@
+{
+  "name": "fnrasecwinlinktemplates",
+  "version": "1.0.0",
+  "description": "Formulaires Winlink pour la FNRASEC",
+  "main": "index.html",
+  "type" : "module",
+  "scripts": {
+    "start": "http-server -p 8080",
+    "build": "node ./src/build.js",
+    "deploy": "node ./src/deploy.js"
+  },
+  "author": "Jelo F4IXH",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FNRASEC Accusé de réception</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/RestoreAccentuatedCharacters.js"></script>
+	<script>
+		function setaccents() {
+			document.getElementById("vSender").innerHTML = setacc(document.getElementById("vSender").innerHTML);
+			document.getElementById("vOrigine").innerHTML = setacc(document.getElementById("vOrigine").innerHTML);
+			document.getElementById("vDestination").innerHTML = setacc(document.getElementById("vDestination").innerHTML);
+			document.getElementById("vSubject").innerHTML = setacc(document.getElementById("vSubject").innerHTML);
+			document.getElementById("vComment").innerHTML = setacc(document.getElementById("vComment").innerHTML);
+			document.getElementById("version").innerHTML = setacc(document.getElementById("version").innerHTML);
+		}
+	</script>
+
+	<head>
+
+	<body onload="setaccents()">
+		<div class="container">
+
+			<div class="header">
+				<img src="img/FNRASEC_Logo.png" alt="Logo FNRASEC">
+				<h1>Accusé de réception</h1>
+				<!-- <div class="help">
+					<a href="#" id="help-link">Aide</a>
+				</div> -->
+			</div>
+
+			<div class="main-content">
+
+
+				<div class="grid-container3">
+					<div class="form-group">
+						<label for="vNumber">Numéro AR</label>
+						<span id="vNumber" class="value-text">{var vNumber}</span>
+					</div>
+
+					<div class="form-group">
+						<label for="vLieu">Message N°</label>
+						<span id="vLieu" class="value-text">{var vLieu}/{var SeqNum}</span>
+					</div>
+
+					<div class="form-group">
+						<label for="DateTime">Date & Heure</label>
+						<span id="DateTime" class="value-text">{var DateTime}</span>
+					</div>
+				</div>
+
+				<div class="grid-container3">
+					<div class="form-group">
+						<label for="msgSender">Indicatif de la station</label>
+						<span id="vSender" class="value-text">{var msgSender}</span>
+					</div>
+
+					<div class="form-group">
+						<label>Niveau de confidentialité</label>
+						<span id="vConfid" class="value-text">{var vConfid}</span>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="vOper">Indicatif de l'opérateur</label>
+						<span id="vOper" class="value-text">{var vOper}</span>
+					</div>
+
+					<div class="form-group">
+						<label for="vOrigine">Autorité origine</label>
+						<span id="vOrigine" class="value-text">{var vOrigine}</span>
+					</div>
+				</div>
+
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="vTo">Indicatif du destinataire</label>
+						<span id="vTo" class="value-text">{var vTo}</span>
+					</div>
+
+					<div class="form-group">
+						<label for="vDestination">Autorité destinataire</label>
+						<span id="vDestination" class="value-text">{var vDestination}</span>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="form-group">
+					<label for="vSubject">Sujet</label>
+					<span id="vSubject" class="value-text">{var vSubject}</span>
+				</div>
+
+				<div class="form-group">
+					<label for="vComment">Commentaires</label>
+					<span id="vComment" class="value-text">{var vComment}</span>
+				</div>
+
+				<!-- Bouton IMPRIMER -->
+				<div class="form-group button">
+					<button id="printPageButton" onclick="javascript:window.print()">Imprimer</button>
+				</div>
+
+			</div>
+
+			<div class="footer">
+				<span id="version" class="footer-text">{var Templateversion}</span>
+				<span class="fnrasec-text">FNRASEC 2025</span>
+			</div>
+
+			<!-- <div class="help-panel" id="help-panel">
+				<button class="close-btn" id="close-btn">Fermer</button>
+				<h2>Aide en Ligne</h2>
+				<p>Voici quelques informations pour vous aider.</p>
+				<img src="https://via.placeholder.com/350x150" alt="Image d'aide">
+			</div> -->
+
+		</div>
+
+	</body>
+
+</html>

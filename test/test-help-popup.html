@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page avec Popup d'Aide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      text-align: center;
+    }
+
+    .popup-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .popup-content .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup-content .close-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Bienvenue sur la Page d'Aide</h1>
+  <p>Cliquez sur le lien ci-dessous pour obtenir de l'aide :</p>
+  <a href="#" id="help-link">Aide</a>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Aide en Ligne</h2>
+      <p>Voici quelques informations pour vous aider.</p>
+      <img src="https://via.placeholder.com/350x150" alt="Image d'aide">
+      <button class="close-btn" id="close-btn">Fermer</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('help-link').addEventListener('click', function (event) {
+      event.preventDefault();
+      document.getElementById('popup').style.display = 'block';
+    });
+
+    document.getElementById('close-btn').addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'none';
+    });
+  </script>
+</body>
+
+</html>

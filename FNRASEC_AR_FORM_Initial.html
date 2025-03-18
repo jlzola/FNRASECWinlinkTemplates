@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FNRASEC Template</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/CommonFunctions.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="init()">
+	<div class="container">
+
+		<div class="header">
+			<img src="img/FNRASEC_Logo.png" alt="Logo FNRASEC">
+			<h1>Accusé de réception</h1>
+			<div class="help">
+				<a href="#" id="help-link">Aide</a>
+			</div>
+		</div>
+
+		<div class="main-content">
+
+			<form onsubmit="return confirm('Cliquez sur OK et fermez la fenêtre de navigateur vide.');" method="post"
+				id="ARForm" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+
+				<!-- Hidden  -->
+				<input name="Templateversion" type="hidden" id="Templateversion" value="2.0.0" />
+
+
+				<div class="grid-container3">
+					<div class="form-group">
+						<label for="vNumber">Numéro AR</label>
+						<input name="vNumber" type="text" id="vNumber" placeholder="Votre numéro d'AR"
+							onkeypress="return isNumberKey(event)" onchange="if (this.value=='-') this.value='N/A'" size="4"
+							maxlength="54">
+					</div>
+
+					<div class="form-group">
+						<label for="vLieu">Origine</label>
+						<select name="vLieu" id="vLieu" required>
+							<option value="RASEC" selected>RASEC</option>
+							<option value="COGIC">COGIC</option>
+							<option value="COZ-Est">COZ-Est</option>
+							<option value="COZ-Idf">COZ-Idf</option>
+							<option value="COZ-Nord">COZ-Nord</option>
+							<option value="COZ-Ouest">COZ-Ouest</option>
+							<option value="COZ-Sud">COZ-Sud</option>
+							<option value="COZ-SE">COZ-SE</option>
+							<option value="COZ-SO">COZ-SO</option>
+							<option value="Outremer">Outremer</option>
+							<option value="COD">COD</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="SeqNum">Référence</label>
+						<input style="color: red;" title="Vous pouvez écraser cette référence avec votre propre numérotation"
+							name="SeqNum" id="SeqNum" value="{SeqNum}" size="6" maxlength="6">
+					</div>
+				</div>
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="DateTime">Date & Heure</label>
+						<input id="DateTime" size="20" name="DateTime" maxlength="23" placeholder="Cliquer pour entrer l'heure"
+							title="Heure UTC par defaut" />
+					</div>
+
+					<div class="form-group">
+						<label for="BtnDate">&nbsp;</label>
+						<button id="BtnDate" type="button" onclick="SetDateToUTC()"
+							title="Cliquer pour basculer en heure UTC ou Locale">UTC / LOC</button>
+					</div>
+				</div>
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="msgSender">Indicatif de la station</label>
+						<input style="color: red" name="msgSender" id="msgSender" value="{msgSender}" size="8" maxlength="8">
+					</div>
+					<!-- 
+				<div class="form-group">
+					<label>Niveau de confidentialité</label>
+					<div style="padding-top:5px;">
+						<span style="color: red; font-weight: bold;"><input name="vConfid"
+								onclick="document.getElementById('Priority').value=this.value" value="DR" checked
+								type="radio" />DR</span>
+						<span style="color: orange; font-weight: bold;">
+							<input name="vConfid" onclick="document.getElementById('Priority').value=this.value" value="Normal"
+								type="radio" /> Normal
+						</span>
+					</div> 
+				</div> -->
+
+					<div class="form-group">
+						<label>Niveau de confidentialité</label>
+						<div class="radio-group">
+							<div class="red">
+								<input type="radio" name="vConfid" value="DR" checked>
+								<span>DR</span>
+							</div>
+							<div class="orange">
+								<input type="radio" name="vConfid" value="Normal">
+								<span>Normal</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="vOper">Indicatif de l'opérateur</label>
+						<input name="vOper" title="Indicatif de l'opérateur" size="10" maxlength="10" class="bg-yellow" />
+					</div>
+
+					<div class="form-group">
+						<label for="vOrigine">Autorité origine</label>
+						<input name="vOrigine" title="Autorité origine" size="35" maxlength="30" class="bg-green" />
+					</div>
+				</div>
+
+				<div class="grid-container">
+					<div class="form-group">
+						<label for="vTo">Indicatif du destinataire</label>
+						<input name="vTo" title="Indicatif du destinataire" size="10" maxlength="10" class="bg-yellow" />
+
+					</div>
+
+					<div class="form-group">
+						<label for="vDestination">Autorité destinataire</label>
+						<input name="vDestination" title="Autorité destinataire" size="35" maxlength="30" class="bg-green" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="vSubject">Sujet</label>
+					<textarea placeholder="Ex : Votre message 'Sujet du message' du 2025-03-20 15:00 UTC" name="vSubject"
+						id="vSubject" title="Sujet du message" rows="1" cols="100" required
+						onkeyup="AutoGrowTextArea(this)"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="vComment">Commentaires</label>
+					<textarea placeholder="Votre commentaire. Ex: Message bien reçu. 73 de Jelo F4IXH" name="vComment"
+						id="vComment" title="Commentaires" rows="2" cols="110" required onkeyup="AutoGrowTextArea(this)"></textarea>
+				</div>
+
+
+				<div class="form-group button">
+					<button type="submit">Envoyer</button>
+				</div>
+
+			</form>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+		</div>
+
+		<div class="footer">
+			<span id="version" class="footer-text"><!-- script --></span>
+			<span class="fnrasec-text">FNRASEC 2025</span>
+		</div>
+
+		<div class="help-panel" id="help-panel">
+			<button class="close-btn" id="close-btn">Fermer</button>
+			<h2>Aide en Ligne</h2>
+			<p>Voici quelques informations pour vous aider.</p>
+			<img src="https://via.placeholder.com/350x150" alt="Image d'aide">
+		</div>
+
+	</div>
+
+
+	<script>
+		function init() {
+
+			// Fichier et Version			
+			const fullName = window.location.pathname.split('/').pop();
+			const filname = fullName.substring(0, fullName.lastIndexOf('.'));
+			document.getElementById("version").innerHTML = filname + ' v' + document.getElementById("Templateversion").value
+
+			// Affichage du pannel d'aide
+			document.getElementById('help-link').addEventListener('click', function (event) {
+				event.preventDefault();
+				document.getElementById('help-panel').classList.add('active');
+			});
+			document.getElementById('close-btn').addEventListener('click', function () {
+				document.getElementById('help-panel').classList.remove('active');
+			});
+
+			// Initialise la date et l'heure 
+			SetDateToUTC();
+
+		}
+	</script>
+
+
+</body>
+
+</html>
