@@ -2,9 +2,7 @@ Form: FNRASEC_AR_FORM_Initial.html,FNRASEC_AR_FORM_Viewer.html
 SeqInc:
 To: <var vTo> 
 Message N°: <var BullNr>
-Subject: [AR] Msg# <var vLieu>/<var SeqNum> From <var vTo>, <var DateTime> / <var vSubject>
--------------------------------------------------------------------------------------------  	
-ActivityType: <var vActivityType>
+Subject: [AR] <var vLieu>/<var SeqNum> from <var vTo>, <var DateTime> / <var vSubject>
 -------------------------------------------------------------------------------------------
 Point de Situation:<var vNumber>
 1. Message: <var vLieu> <var SeqNum>
@@ -22,7 +20,7 @@ Point de Situation:<var vNumber>
 ------------------------------------
 Express Sending Station: <MsgSender>
 Express Version: <ProgramVersion>
-Template Version: <var Templateversion>
+Template Version: <var TemplateVersion>
 
 
 
