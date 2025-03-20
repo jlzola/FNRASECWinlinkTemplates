@@ -5,10 +5,46 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="version" content="2.0.5">
 	<title>FNRASEC Template</title>
 
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/CommonFunctions.js" type="text/javascript"></script>
+	<script>
+		function init() {
+
+			//
+			// Fichier et Version			
+
+			// Récupérer toutes les balises meta dans le head
+			const version = getVersion();
+
+			//Set version dans le footer
+			const fullName = window.location.pathname.split('/').pop();
+			const filename = fullName.substring(0, fullName.lastIndexOf('.'));
+			document.getElementById("version").innerHTML = filename + ' v' + version;
+
+			// set input[hidden] du formulaire
+			document.getElementById("TemplateVersion").value = version;
+
+
+			// 
+			// Event pour l'affichage du panel d'aide
+			document.getElementById('help-link').addEventListener('click', function (event) {
+				event.preventDefault();
+				document.getElementById('help-panel').classList.add('active');
+			});
+			document.getElementById('close-btn').addEventListener('click', function () {
+				document.getElementById('help-panel').classList.remove('active');
+			});
+
+
+			// 
+			// Initialise la date et l'heure 
+			SetDateToUTC();
+
+		}
+	</script>
 
 </head>
 
@@ -28,12 +64,12 @@
 			<form onsubmit="return confirm('Cliquez sur OK et fermez la fenêtre de navigateur vide.');" method="post"
 				id="ARForm" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 
-				<!-- Hidden  -->
-				<input name="Templateversion" type="hidden" id="Templateversion" value="2.0.0" />
+				<!-- Hidden : Value est récupéré par script depuis la balise meta version -->
+				<input name="TemplateVersion" type="hidden" id="TemplateVersion" value="" />
 
 
 				<div class="grid-container3">
-					<div class="form-group">
+					<div class="form-group" style="width: 180px;">
 						<label for="vNumber">Numéro AR</label>
 						<input name="vNumber" type="text" id="vNumber" placeholder="Votre numéro d'AR"
 							onkeypress="return isNumberKey(event)" onchange="if (this.value=='-') this.value='N/A'" size="4"
@@ -42,8 +78,8 @@
 
 					<div class="form-group">
 						<label for="vLieu">N° Message</label>
-						<div class="form-group" style="display: flex; gap: 2px">
-							<select aria-placeholder="Origine" name="vLieu" id="vLieu" required style="width: 100px;">
+						<div class="form-group" style="display: flex; gap: 2px; width: 200px;">
+							<select aria-placeholder="Origine" name="vLieu" id="vLieu" required style="width: 90px;">
 								<option value="RASEC" selected>RASEC</option>
 								<option value="COGIC">COGIC</option>
 								<option value="COZ-Est">COZ-Est</option>
@@ -56,8 +92,8 @@
 								<option value="Outremer">Outremer</option>
 								<option value="COD">COD</option>
 							</select>
-							<input style="color: red" title="Vous pouvez écraser cette référence avec votre propre numérotation"
-								name="SeqNum" id="SeqNum" value="{SeqNum}" size="6" maxlength="6">
+							<input title="Vous pouvez écraser cette référence avec votre propre numérotation" name="SeqNum"
+								id="SeqNum" value="{SeqNum}" size="6" maxlength="6" style="color: red;  width: 80px;">
 						</div>
 					</div>
 
@@ -142,27 +178,20 @@
 				</div>
 
 			</form>
-
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-
 		</div>
+
+		<!-- <div style="height: 100px;"></div> -->
 
 		<div class="footer">
 			<span id="version" class="footer-text"><!-- script --></span>
-			<!-- <span class="fnrasec-text">FNRASEC 2025</span> -->
+			<span class="fnrasec-text">FNRASEC 2025</span>
 			<span class="footer-text"><a href="https://github.com/jlzola/FNRASECWinlinkTemplates" target="_blank">FNRASEC
-					Winlink Templates
-					on gihub.com</a></span>
-
+					Winlink Templates on GitHub</a></span>
 		</div>
 
+		<!-- Aide en ligne -->
+		<!-- Aide en ligne -->
+		<!-- Aide en ligne -->
 		<div class="help-panel" id="help-panel">
 			<button class="close-btn" id="close-btn">Fermer</button>
 			<h2>Aide en Ligne</h2>
@@ -171,31 +200,6 @@
 		</div>
 
 	</div>
-
-
-	<script>
-		function init() {
-
-			// Fichier et Version			
-			const fullName = window.location.pathname.split('/').pop();
-			const filname = fullName.substring(0, fullName.lastIndexOf('.'));
-			document.getElementById("version").innerHTML = filname + ' v' + document.getElementById("Templateversion").value
-
-			// Affichage du pannel d'aide
-			document.getElementById('help-link').addEventListener('click', function (event) {
-				event.preventDefault();
-				document.getElementById('help-panel').classList.add('active');
-			});
-			document.getElementById('close-btn').addEventListener('click', function () {
-				document.getElementById('help-panel').classList.remove('active');
-			});
-
-			// Initialise la date et l'heure 
-			SetDateToUTC();
-
-		}
-	</script>
-
 
 </body>
 

@@ -4,10 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="version" content="2.0.5">
 	<title>FNRASEC Accusé de réception</title>
 
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="js/RestoreAccentuatedCharacters.js"></script>
+	<script src="js/CommonFunctions.js" type="text/javascript"></script>
+
 	<script>
 		function setaccents() {
 			document.getElementById("vSender").innerHTML = setacc(document.getElementById("vSender").innerHTML);
@@ -17,16 +20,35 @@
 			document.getElementById("vComment").innerHTML = setacc(document.getElementById("vComment").innerHTML);
 			document.getElementById("version").innerHTML = setacc(document.getElementById("version").innerHTML);
 		}
+
+		function init() {
+
+			//
+			// Fichier et Version			
+
+			// Récupérer toutes les balises meta dans le head
+			const version = getVersion();
+
+			//Set version dans le footer
+			const fullName = window.location.pathname.split('/').pop();
+			const filename = fullName.substring(0, fullName.lastIndexOf('.'));
+			document.getElementById("version").innerHTML = filename + ' v' + version;
+
+			setaccents();
+		}
+
+	</script>
+
 	</script>
 
 	<head>
 
-	<body onload="setaccents()">
+	<body onload="init()">
 		<div class="container">
 
 			<div class="header">
 				<img src="img/FNRASEC_Logo.png" alt="Logo FNRASEC">
-				<h1>Accusé de réception</h1>
+				<h1>Accusé de réception N°<span id="vNumber">{var vNumber}</span></h1>
 				<!-- <div class="help">
 					<a href="#" id="help-link">Aide</a>
 				</div> -->
@@ -34,12 +56,11 @@
 
 			<div class="main-content">
 
-
 				<div class="grid-container3">
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="vNumber">Numéro AR</label>
 						<span id="vNumber" class="value-text">{var vNumber}</span>
-					</div>
+					</div> -->
 
 					<div class="form-group">
 						<label for="vLieu">Message N°</label>
@@ -50,9 +71,6 @@
 						<label>Niveau de confidentialité</label>
 						<span id="vConfid" class="value-text">{var vConfid}</span>
 					</div>
-				</div>
-
-				<div class="grid-container3">
 
 					<div class="form-group">
 						<label for="DateTime">Date & Heure</label>
@@ -114,12 +132,12 @@
 			</div>
 
 			<div class="footer">
-				<span id="version" class="footer-text">{var Templateversion}</span>
-				<!-- <span class="fnrasec-text">FNRASEC 2025</span> -->
+				<span id="version" class="footer-text"><!--script--></span>
+				<span class="fnrasec-text">FNRASEC 2025</span>
 				<span class="footer-text"><a href="https://github.com/jlzola/FNRASECWinlinkTemplates" target="_blank">FNRASEC
-						Winlink Templates
-						on gihub.com</a></span>
+						Winlink Templates on GitHub</a></span>
 			</div>
+
 
 			<!-- <div class="help-panel" id="help-panel">
 				<button class="close-btn" id="close-btn">Fermer</button>

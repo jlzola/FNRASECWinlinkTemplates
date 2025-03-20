@@ -142,6 +142,9 @@ function SetDateToUTC() {
 }
 
 
+//======================================================================================
+// Permet de ne saisir que des chiffre dans un input
+//======================================================================================	
 function isNumberKey(event) {
 	const charCode = event.which ? event.which : event.keyCode;
 	// Autoriser : backspace, delete, tab, escape, enter, et les touches fléchées
@@ -158,3 +161,17 @@ function isNumberKey(event) {
 }
 
 
+//======================================================================================
+// retourne la version de la la balise <meta name="version" content="1.0.0">
+//======================================================================================	
+function getVersion() {
+	const metaTags = document.head.getElementsByTagName('meta');
+	let version = 'Version inconnue';
+	for (let i = 0; i < metaTags.length; i++) {
+		if (metaTags[i].getAttribute('name') === 'version') {
+			version = metaTags[i].getAttribute('content');
+			break;
+		}
+	}
+	return version;
+}

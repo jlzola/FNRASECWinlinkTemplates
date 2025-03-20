@@ -31,7 +31,7 @@ LEs modèles de formulaire FNRAEC pour Winlink + VARA.
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/votre-utilisateur/votre-projet.git
+git clone https://github.com/jlzola/FNRASECWinlinkTemplates
 
 # Installer les dépendances
 npm install
@@ -85,6 +85,7 @@ Distribué sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📧 Contact
 
-Jean-Louis Zola - F4IXH - [https://jlz.free.fr](https://jlz.free.fr) - jlzola@gmail.com
+- Jean-Louis Zola - [https://jlz.free.fr](https://jlz.free.fr) - jlz@free.fr
 
-[FNRASEC Winlink Templates](https://github.com/jlzola/FNRASECWinlinkTemplates)
+- F4IXH Jean-Louis - [https://qrz.com/db/f4ixh](https://qrz.com/db/f4ixh)
+- [FNRASEC Winlink Templates](https://github.com/jlzola/FNRASECWinlinkTemplates)
